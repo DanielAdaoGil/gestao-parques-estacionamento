@@ -1,5 +1,7 @@
 package gestaoparques.model;
 
+import gestaoparques.service.ViaturaService;
+
 public class texte {
     public static void main(String[] args) {
         //ÁREA DA VIATURA
