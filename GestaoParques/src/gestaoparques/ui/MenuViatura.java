@@ -6,6 +6,8 @@ import gestaoparques.service.MultaService;
 import gestaoparques.service.PagamentoService;
 import gestaoparques.service.ParqueService;
 import gestaoparques.service.ViaturaService;
+import gestaoparques.util.Validador;
+
 import java.util.Scanner;
 
 public class MenuViatura {
@@ -22,11 +24,18 @@ public class MenuViatura {
             System.out.println("Parque não encontrado!");
             return;
         }
-
         System.out.print("Matrícula da viatura: ");
         String matricula = scanner.nextLine();
+        if (!Validador.validarMatricula(matricula)) {
+        System.out.println("Matrícula inválida! Use o formato LD-28-62-RF ou ABC-12-34");
+        return;
+}
         System.out.print("Hora de entrada: ");
         int hora = scanner.nextInt();
+        if (!Validador.validarHoraEntrada(hora)) {
+        System.out.println("Hora de ser maior 0 e menor que24 inválida!");
+        return;
+}
 
         ViaturaService.registarViatura(matricula, hora, p);
     }
@@ -35,7 +44,10 @@ public class MenuViatura {
         scanner.nextLine();
         System.out.print("Matrícula da viatura: ");
         String matricula = scanner.nextLine();
-
+        if (!Validador.validarMatricula(matricula)) {
+        System.out.println("Matrícula inválida! Use o formato LD-28-62-RF ou ABC-12-34");
+        return;
+}
         Viatura v = ViaturaService.buscarViatura(matricula);
         if (v == null) {
             System.out.println("Viatura não registada! A registar e aplicar multa...");
