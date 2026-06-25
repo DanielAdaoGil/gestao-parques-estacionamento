@@ -10,7 +10,7 @@ public class ParqueService{
         Parque p = new Parque(nomeParque, capacidade, valorHora, valorAdicional);
         parques[totalParques] = p;
         totalParques ++; 
-        FicheiroUtil.guardarLinha("GestaoParques/dados/parques.txt", p.toString());
+        FicheiroUtil.guardarLinha("dados/parques.txt", p.toString());
         System.out.println("Parque " + nomeParque + " registado com sucesso!");
     }
     public static Parque buscarParque(String nomeParque){
@@ -30,7 +30,7 @@ public class ParqueService{
     return -1;
 }
     public static void carregarFicheiro(){
-        String[] linhas = FicheiroUtil.lerLinhas("GestaoParques/dados/parques.txt");
+        String[] linhas = FicheiroUtil.lerLinhas("dados/parques.txt");
         for(int i = 0; i <linhas.length; i++){
             if (linhas[i] != null && !linhas[i].isEmpty()) {
                 parques[totalParques] = Parque.fromParque(linhas[i]);
