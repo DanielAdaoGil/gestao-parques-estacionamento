@@ -6,8 +6,16 @@ public class ViaturaService{
     private static Viatura[] viaturas = new Viatura[150]; 
     private static int totalViaturas = 0;
     
+    public static boolean matriculaValida(String matricula) {
+        return matricula.matches("[A-Z]{2}-\\d{4}-[A-Z]{2}")          // XX-NNNN-XX
+            || matricula.matches("[A-Z]{3}-\\d{2}-\\d{2}")            // XXX-NN-NN
+            || matricula.matches("[A-Z]{2}-\\d{2}-\\d{2}-[A-Z]{2}");  // formato do exemplo "LD-28-62-RF"
+    }
+
     public static void registarViatura(String matricula, int horaEntrada, Parque parque) {
-    if (buscarViatura(matricula) != null) {
+    
+    
+        if (buscarViatura(matricula) != null) {
         System.out.println("Viatura já registada!");
         return;
     }
