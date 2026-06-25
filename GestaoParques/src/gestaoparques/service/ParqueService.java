@@ -1,22 +1,22 @@
 package gestaoparques.service;
 import gestaoparques.util.FicheiroUtil;
 import gestaoparques.model.Parque;
+import java.util.ArrayList;
+
 public class ParqueService{
-    private static Parque[] parques = new Parque[4];
-    private static int totalParques = 0;
+    private static ArrayList<Parque> parques = new ArrayList<>();
     
     public static void registarParque(String nomeParque, int capacidade, double valorHora, double valorAdicional){
 
         Parque p = new Parque(nomeParque, capacidade, valorHora, valorAdicional);
-        parques[totalParques] = p;
-        totalParques ++; 
+        parques.add(p);
         FicheiroUtil.guardarLinha("dados/parques.txt", p.toString());
         System.out.println("Parque " + nomeParque + " registado com sucesso!");
     }
     public static Parque buscarParque(String nomeParque){
-        for(int i = 0; i < totalParques; i++){
-            if(parques[i].getNome().equalsIgnoreCase(nomeParque)){
-                return parques[i];
+        for(Parque p : parques){
+            if(p.getNome().equalsIgnoreCase(nomeParque)){
+                return p;
             }
         }
         return null;
@@ -33,8 +33,7 @@ public class ParqueService{
         String[] linhas = FicheiroUtil.lerLinhas("dados/parques.txt");
         for(int i = 0; i <linhas.length; i++){
             if (linhas[i] != null && !linhas[i].isEmpty()) {
-                parques[totalParques] = Parque.fromParque(linhas[i]);
-                totalParques++;
+                parques.add(Parque.fromParque(linhas[i]));
             }
         }
     }
