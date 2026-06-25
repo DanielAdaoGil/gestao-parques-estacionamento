@@ -15,6 +15,7 @@ public class ViaturaService{
     public static void registarViatura(String matricula, int horaEntrada, Parque parque) {
         if (!matriculaValida(matricula)) {
             System.out.println("Matrícula inválida!");
+            System.out.println("Modelos de Matrícula:\n XX-NN-NN-XX \n XXX-NN-NN");
             return;
         }
     
