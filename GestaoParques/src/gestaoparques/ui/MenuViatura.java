@@ -13,6 +13,8 @@ public class MenuViatura {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void mostrarMenuViatura() {
+
+        scanner.nextLine();
         System.out.print("Nome do parque: ");
         String nomeParque = scanner.nextLine();
         Parque p = ParqueService.buscarParque(nomeParque);
