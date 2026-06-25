@@ -15,7 +15,7 @@ public class Menu {
             System.out.println("2. Registar Viatura");
             System.out.println("3. Pagamento");
             System.out.println("4. Relatórios");
-            System.out.println("6. Sair");
+            System.out.println("5. Sair");
             System.out.println("=============================");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
