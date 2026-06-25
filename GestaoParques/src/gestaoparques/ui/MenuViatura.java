@@ -37,6 +37,12 @@ public class MenuViatura {
         String matricula = scanner.nextLine();
 
         Viatura v = ViaturaService.buscarViatura(matricula);
+        
+        if (v.getHoraSaida() <= v.getHoraEntrada()) {
+            System.out.println("Hora de saída deve ser maior que a hora de entrada!");
+            return;
+        }
+        
         if (v == null) {
             System.out.println("Viatura não registada! A registar e aplicar multa...");
             System.out.print("Nome do parque: ");
