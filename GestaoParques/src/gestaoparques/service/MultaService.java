@@ -32,5 +32,17 @@ public class MultaService{
         }
 
     }
+
+    public static int getTotalMultas() {
+    return totalMultas;
+}
+
+public static double getFaturacaoMultas() {
+    double total = 0;
+    for (int i = 0; i < totalMultas; i++) {
+        total += multas[i].getValor();
+    }
+    return total;
+}
     
 }

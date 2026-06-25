@@ -38,4 +38,13 @@ public class ParqueService{
             }
         }
     }
+
+    public static void mostrarEstatisticas(Parque p) {
+    int ocupados = p.getTotalOcupados();
+    int livres = p.getCapacidade() - ocupados;
+    double percentual = (ocupados * 100.0) / p.getCapacidade();
+    System.out.println("Lugares ocupados: " + ocupados);
+    System.out.println("Lugares livres: " + livres);
+    System.out.printf("Lotação: %.1f%%\n", percentual);
+}
 }

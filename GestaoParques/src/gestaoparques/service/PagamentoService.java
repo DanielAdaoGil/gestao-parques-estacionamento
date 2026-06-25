@@ -5,6 +5,8 @@ import gestaoparques.model.Parque;
 
 public class PagamentoService {
 
+    private static double faturacaoTotal = 0;
+
     public static double calcularPagamento(Viatura v, Parque p) {
     int horas = v.getHoraSaida() - v.getHoraEntrada();
     
@@ -12,9 +14,14 @@ public class PagamentoService {
         System.out.println("Hora de saída inválida!");
         return 0;
     }
-    return horas * p.getValorHora();
+
+    double valor = horas * p.getValorHora();
+    faturacaoTotal += valor;
+    return valor;
 }
+
     public static double calcularMultaNaoRegistada(Parque parque) {
         return parque.getValorHora() * 10;
     }
+
 }
