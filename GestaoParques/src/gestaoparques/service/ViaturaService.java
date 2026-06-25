@@ -13,18 +13,21 @@ public class ViaturaService{
     }
 
     public static void registarViatura(String matricula, int horaEntrada, Parque parque) {
-    
+        if (!matriculaValida(matricula)) {
+            System.out.println("Matrícula inválida!");
+            return;
+        }
     
         if (buscarViatura(matricula) != null) {
-        System.out.println("Viatura já registada!");
-        return;
-    }
-    // Encontra o próximo espaço livre
-    int espaco = ParqueService.proximoEspacoLivre(parque);
-    if (espaco == -1) {
-        System.out.println("Parque cheio!");
-        return;
-    }
+            System.out.println("Viatura já registada!");
+            return;
+        }
+        // Encontra o próximo espaço livre
+        int espaco = ParqueService.proximoEspacoLivre(parque);
+        if (espaco == -1) {
+            System.out.println("Parque cheio!");
+            return;
+        }
     // Cria a viatura e atribui o espaço e parque
     Viatura v = new Viatura(matricula, horaEntrada);
     v.setEspaco(espaco);
