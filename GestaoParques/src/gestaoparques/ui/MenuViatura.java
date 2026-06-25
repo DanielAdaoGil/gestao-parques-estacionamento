@@ -43,6 +43,7 @@ public class MenuViatura {
             String nomeParque = scanner.nextLine();
             Parque p = ParqueService.buscarParque(nomeParque);
             if (p != null) {
+                ViaturaService.registarViatura(matricula, 0, p); // <- regista primeiro (estava faltando)
                 double multa = PagamentoService.calcularMultaNaoRegistada(p);
                 MultaService.aplicarMulta(matricula, multa, "NAO_REGISTADA", 0);
             }
