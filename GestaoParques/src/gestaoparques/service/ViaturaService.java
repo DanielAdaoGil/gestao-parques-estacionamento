@@ -40,7 +40,7 @@ public class ViaturaService{
     parque.getEspacos()[espaco] = v;
     parque.setTotalOcupados(parque.getTotalOcupados() + 1);
 
-    FicheiroUtil.guardarLinha("GestaoParques/dados/viaturas.txt", v.toString());
+    FicheiroUtil.guardarLinha("dados/viaturas.txt", v.toString());
     System.out.println("Viatura " + matricula + " registada no espaço " + espaco + " do parque " + parque.getNome());
 }
     public static Viatura buscarViatura(String matricula){
@@ -52,7 +52,7 @@ public class ViaturaService{
         return null;
     }
     public static void carregarFicheiro(){
-        String[] linhas = FicheiroUtil.lerLinhas("GestaoParques/dados/viaturas.txt");
+        String[] linhas = FicheiroUtil.lerLinhas("dados/viaturas.txt");
         for(int i = 0; i < linhas.length; i++){
             if(linhas[i] != null && !linhas[i].isEmpty()){
                 viaturas[totalViaturas] = Viatura.fromString(linhas[i]);
