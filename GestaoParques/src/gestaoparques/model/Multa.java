@@ -47,7 +47,7 @@ public class Multa{
             return multa;
     }
     public String mostrarMulta(){
-        return "\nMultas\nMatricula: " +getMatricula() +"\nValor: " + getValor() +"\nTipo: " 
+        return "\nMultas\n\nMatricula: " +getMatricula() +"\nValor: " + getValor() +"\nTipo: " 
                 + getTipo()+"\nHora: " + getHora();
     }
 }
