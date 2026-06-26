@@ -2,6 +2,7 @@ package gestaoparques.service;
 import gestaoparques.model.Parque;
 import gestaoparques.model.Viatura;
 import gestaoparques.util.FicheiroUtil;
+
 public class ViaturaService{
     private static Viatura[] viaturas = new Viatura[150]; 
     private static int totalViaturas = 0;

@@ -7,6 +7,7 @@ import gestaoparques.service.PagamentoService;
 import gestaoparques.service.ParqueService;
 import gestaoparques.service.ViaturaService;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class MenuViatura {
 
@@ -27,9 +28,15 @@ public class MenuViatura {
         System.out.print("Matrícula da viatura: ");
         String matricula = scanner.nextLine();
         System.out.print("Hora de entrada: ");
-        int hora = scanner.nextInt();
 
-        ViaturaService.registarViatura(matricula, hora, p);
+        try {
+                int hora = scanner.nextInt();
+                ViaturaService.registarViatura(matricula, hora, p);
+            } catch (InputMismatchException e) {
+                System.out.println("Erro: Digite apenas números inteiros.");
+                scanner.nextLine(); // limpa o buffer
+                return;
+            } 
     }
 
     public static void processarPagamento() {
@@ -37,29 +44,36 @@ public class MenuViatura {
         System.out.print("Matrícula da viatura: ");
         String matricula = scanner.nextLine();
 
-        Viatura v = ViaturaService.buscarViatura(matricula);
-        
-        if (v.getHoraSaida() <= v.getHoraEntrada()) {
-            System.out.println("Hora de saída deve ser maior que a hora de entrada!");
-            return;
-        }
-        
+        Viatura v = ViaturaService.buscarViatura(matricula);        
+
         if (v == null) {
-            System.out.println("Viatura não registada! A registar e aplicar multa...");
-            System.out.print("Nome do parque: ");
-            String nomeParque = scanner.nextLine();
-            Parque p = ParqueService.buscarParque(nomeParque);
-            if (p != null) {
-                ViaturaService.registarViatura(matricula, 0, p); // <- regista primeiro (estava faltando)
-                double multa = PagamentoService.calcularMultaNaoRegistada(p);
-                MultaService.aplicarMulta(matricula, multa, "NAO_REGISTADA", 0);
-            }
-            return;
+                System.out.println("Viatura não registada! A registar e aplicar multa...");
+                System.out.print("Nome do parque: ");
+                String nomeParque = scanner.nextLine();
+                Parque p = ParqueService.buscarParque(nomeParque);
+                    if (p != null) {
+                        ViaturaService.registarViatura(matricula, 0, p); // <- regista primeiro (estava faltando)
+                        double multa = PagamentoService.calcularMultaNaoRegistada(p);
+                        MultaService.aplicarMulta(matricula, multa, "NAO_REGISTADA", 0);
+                    }
+                 return;
         }
 
         System.out.print("Hora de saída: ");
-        int horaSaida = scanner.nextInt();
-        v.setHoraSaida(horaSaida);
+
+        try {
+            int horaSaida = scanner.nextInt();
+            v.setHoraSaida(horaSaida);
+
+            if (v.getHoraSaida() <= v.getHoraEntrada()) {
+                System.out.println("Hora de saída deve ser maior que a hora de entrada!");
+                return;
+            }          
+        } catch (InputMismatchException e) {
+           System.out.println("Erro: Digite apenas números inteiros.");
+                scanner.nextLine(); // limpa o buffer
+                return;
+        }
 
         Parque p = ParqueService.buscarParque(v.getParque());
         double valor = PagamentoService.calcularPagamento(v, p);
