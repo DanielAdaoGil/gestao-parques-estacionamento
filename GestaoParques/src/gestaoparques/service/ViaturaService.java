@@ -52,6 +52,13 @@ public class ViaturaService{
         }
         return null;
     }
+
+    public static void listarViaturas(){
+       for(int i = 0; i<totalViaturas; i++){
+        System.out.println(viaturas[i].mostraViaturas());
+       }
+    }
+
     public static void carregarFicheiro(){
         String[] linhas = FicheiroUtil.lerLinhas("dados/viaturas.txt");
         for(int i = 0; i < linhas.length; i++){

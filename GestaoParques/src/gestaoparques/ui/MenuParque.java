@@ -38,7 +38,7 @@ public class MenuParque {
                 default:
                     System.out.println("Opção inválida!");
             }
-        } while (opcao != 3);
+        } while (opcao != 4);
     }
 
     private static void registarParque() {
