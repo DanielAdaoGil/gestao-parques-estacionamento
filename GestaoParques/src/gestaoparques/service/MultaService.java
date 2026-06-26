@@ -9,7 +9,7 @@ public class MultaService{
         Multa multa = new Multa(matricula, valor, tipo, hora);
         multas[totalMultas] = multa;
         totalMultas++;
-        FicheiroUtil.guardarLinha("GestaoParques/dados/multas.txt", multa.toString());
+        FicheiroUtil.guardarLinha("dados/multas.txt", multa.toString());
         System.out.println("Multa aplicada à viatura " + matricula + " — Tipo: " + tipo + " Valor: " + valor);
     } 
     public static void listarMultas(){
@@ -23,7 +23,7 @@ public class MultaService{
        }  
     }
     public static void carregarFicheiro(){
-        String[] dados = FicheiroUtil.lerLinhas("GestaoParques/dados/viaturas.txt");
+        String[] dados = FicheiroUtil.lerLinhas("dados/multas.txt");
         for(int i = 0; i < dados.length; i++){
             if(dados[i] != null && !dados[i].isEmpty()){
                 multas[totalMultas] = Multa.fromMulta(dados[i]);

@@ -49,7 +49,9 @@ public class ParqueService{
 
     public static void listarParques(){
         for (Parque parque : parques) {
-            System.out.println(parque);
+            System.out.printf("\n\nNome do Parque: " + parque.getNome() + "\nCapacidade: " + parque.getCapacidade() 
+                        + "\nValor por Hora: " + parque.getValorHora() + "\nValor Adicional: " + parque.getValorAdicional() + "\nTotal Ocupados: " + parque.getTotalOcupados() 
+                        +"\nTotal de espaços livres: "+ (parque.getCapacidade() - parque.getTotalOcupados()));
         }
     }
 }

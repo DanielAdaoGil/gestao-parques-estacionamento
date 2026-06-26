@@ -47,7 +47,8 @@ public class MenuViatura {
         Viatura v = ViaturaService.buscarViatura(matricula);        
 
         if (v == null) {
-                System.out.println("Viatura não registada! A registar e aplicar multa...");
+                try {
+                    System.out.println("Viatura não registada! A registar e aplicar multa...");
                 System.out.print("Nome do parque: ");
                 String nomeParque = scanner.nextLine();
                 Parque p = ParqueService.buscarParque(nomeParque);
@@ -57,6 +58,9 @@ public class MenuViatura {
                         MultaService.aplicarMulta(matricula, multa, "NAO_REGISTADA", 0);
                     }
                  return;
+                } catch (Exception e) {
+                   System.out.println("Erro não identificado !");
+                }
         }
 
         System.out.print("Hora de saída: ");
