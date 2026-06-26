@@ -16,7 +16,8 @@ public class MenuParque {
             System.out.println("=============================");
             System.out.println("1. Registar Parque");
             System.out.println("2. Buscar Parque");
-            System.out.println("3. Voltar");
+            System.out.println("3. Listar Parques");
+            System.out.println("4. Voltar");
             System.out.println("=============================");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
@@ -29,6 +30,9 @@ public class MenuParque {
                     buscarParque();
                     break;
                 case 3:
+                    listarParques();
+                    break;
+                case 4:
                     System.out.println("A voltar...");
                     break;
                 default:
@@ -61,5 +65,9 @@ public class MenuParque {
         } else {
             System.out.println("Parque não encontrado!");
         }
+    }
+
+    private static void listarParques() {
+        ParqueService.listarParques();
     }
 }

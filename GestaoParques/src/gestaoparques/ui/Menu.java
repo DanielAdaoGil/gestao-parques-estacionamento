@@ -1,4 +1,5 @@
 package gestaoparques.ui;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -18,7 +19,8 @@ public class Menu {
             System.out.println("5. Sair");
             System.out.println("=============================");
             System.out.print("Escolha uma opção: ");
-            opcao = scanner.nextInt();
+            
+                opcao = scanner.nextInt();
 
             switch (opcao) {
                 case 1:
@@ -37,8 +39,9 @@ public class Menu {
                     System.out.println("A sair do sistema...");
                     break;
                 default:
-                    System.out.println("Opção inválida!");
-            }
+                    System.out.println("Opção inválida!");}
+             
+            
         } while (opcao != 5);
     }
 }

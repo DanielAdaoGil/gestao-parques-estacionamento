@@ -46,4 +46,10 @@ public class ParqueService{
     System.out.println("Lugares livres: " + livres);
     System.out.printf("Lotação: %.1f%%\n", percentual);
 }
+
+    public static void listarParques(){
+        for (Parque parque : parques) {
+            System.out.println(parque);
+        }
+    }
 }

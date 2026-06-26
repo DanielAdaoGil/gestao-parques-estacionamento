@@ -76,11 +76,13 @@ public class Parque {
         return parque;
     }
 
+  
    public String mostrarParque() {
         return "Nome do Parque: " + getNome() + "\nCapacidade: " + getCapacidade() 
                         + "\nValor por Hora: " + getValorHora() + "\nValor Adicional: " + getValorAdicional() + "\nTotal Ocupados: " + getTotalOcupados() 
                         +"\nTotal de espaços livres: "+ (getCapacidade() - getTotalOcupados());
     } 
+    
 
     
     
