@@ -9,7 +9,7 @@ public class FicheiroUtil{
     
     public static void guardarLinha(String nomeFicheiro, String linha) {
     try {
-        FileWriter fw = new FileWriter(nomeFicheiro, true); // true = acrescenta ao invés de false
+        FileWriter fw = new FileWriter(nomeFicheiro); // true = acrescenta ao invés de false
         fw.write(linha + "\n");
         fw.close();
     } catch (IOException e) {

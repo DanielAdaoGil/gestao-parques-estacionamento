@@ -8,8 +8,7 @@ public class ViaturaService{
     private static int totalViaturas = 0;
     
     public static boolean matriculaValida(String matricula) {
-        return matricula.matches("[A-Z]{2}-\\d{4}-[A-Z]{2}")          // XX-NNNN-XX
-            || matricula.matches("[A-Z]{3}-\\d{2}-\\d{2}")            // XXX-NN-NN
+        return matricula.matches("[A-Z]{3}-\\d{2}-\\d{2}")            // XXX-NN-NN
             || matricula.matches("[A-Z]{2}-\\d{2}-\\d{2}-[A-Z]{2}");  // formato do exemplo "LD-28-62-RF"
     }
 
@@ -57,6 +56,12 @@ public class ViaturaService{
        for(int i = 0; i<totalViaturas; i++){
         System.out.println(viaturas[i].mostraViaturas());
        }
+    }
+
+    public static void removerViatura(){
+       for(int i = 0; i<totalViaturas; i++){
+        
+    }
     }
 
     public static void carregarFicheiro(){

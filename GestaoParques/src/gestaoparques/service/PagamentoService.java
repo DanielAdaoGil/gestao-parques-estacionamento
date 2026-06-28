@@ -1,5 +1,5 @@
 package gestaoparques.service;
-
+import gestaoparques.service.ViaturaService;
 import gestaoparques.model.Viatura;
 import gestaoparques.model.Parque;
 
@@ -14,6 +14,7 @@ public class PagamentoService {
         System.out.println("Hora de saída inválida!");
         return 0;
     }
+
 
     double valor = horas * p.getValorHora();
     faturacaoTotal += valor;
